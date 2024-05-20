@@ -17,8 +17,8 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(0deg, rgb(20, 0, 0) 32%, rgba(0,0,0,1) 100%);
-
+  background: linear-gradient(0deg, rgba(20, 0, 0, 0.651) 32%, rgba(0, 0, 0, 0) 100%);
+  background-color: black;
 }
 
 #particles-js {
@@ -35,4 +35,10 @@ body, html {
 
 .logo {
   width: 550px;
+}
+
+.button-links{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
