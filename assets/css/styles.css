@@ -39,6 +39,11 @@ body, html {
 
 .button-links{
   display: flex;
-  justify-content: space-between;
   margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button{
+  margin-right: 1rem;
 }
