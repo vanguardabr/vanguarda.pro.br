@@ -1,7 +1,3 @@
-body {
-    background: linear-gradient(0deg, rgb(20, 0, 0) 32%, rgba(0,0,0,1) 100%);
-}
-
 .spark {
     background-color: #DE4A00;
     font-family: 'Helvetica', sans-serif;
@@ -14,7 +10,6 @@ body {
     z-index: 0;
 }
 
-
 body, html {
   margin: 0;
   padding: 0;
@@ -22,17 +17,22 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(0deg, rgb(20, 0, 0) 32%, rgba(0,0,0,1) 100%);
+
 }
+
 #particles-js {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
 }
+
 .logo-container {
   position: relative;
   z-index: 99;
 }
+
 .logo {
   width: 550px;
 }
