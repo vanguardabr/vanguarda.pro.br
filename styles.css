@@ -1,0 +1,17 @@
+body {
+    background-color: #120000;
+}
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+.spark {
+    background-color: #DE4A00;
+    font-family: 'Helvetica', sans-serif;
+    visibility: hidden;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 30%;
+    box-shadow: 0 0 5px #AB000B;
+}
