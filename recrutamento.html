@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recrutamento — Vanguarda</title>
+  <meta name="description" content="Estamos recrutando. Cadastre-se com o Discord para entrar na Vanguarda em CS2, Hell Let Loose ou Wardogs.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="page-auth">
+
+  <main class="auth">
+    <!-- lado esquerdo: marca e contexto da doação -->
+    <aside class="auth-side">
+      <a href="index.html" class="auth-logo-wrap" aria-label="Vanguarda"><img src="assets/img/logo.png" alt="Vanguarda" class="auth-logo"></a>
+      <div class="auth-side-copy">
+        <span class="kicker">Recrutamento</span>
+        <h1>Estamos recrutando.<br>Entre para o clã.</h1>
+        <p class="muted">Vagas abertas em CS2, Hell Let Loose e Wardogs, para qualquer nível. Cadastre-se com o Discord e a staff te chama para um teste ou te encaminha para a divisão certa.</p>
+        <ul class="auth-trust">
+          <li><i class="fa-solid fa-circle-check"></i> Vagas em todas as modalidades</li>
+          <li><i class="fa-solid fa-circle-check"></i> Qualquer nível é bem-vindo</li>
+          <li><i class="fa-solid fa-circle-check"></i> Teste agendado pela staff</li>
+        </ul>
+      </div>
+      <a href="index.html#modalidades" class="auth-back"><i class="fa-solid fa-arrow-left"></i> Voltar para o site</a>
+    </aside>
+
+    <!-- lado direito: telas de login e cadastro -->
+    <section class="auth-panel">
+      <div class="auth-card">
+        <!-- TELA: CADASTRO -->
+        <div class="auth-view" id="view-signup">
+          <h2>Cadastro de recruta</h2>
+          <p class="muted">Cadastre-se com o seu Discord. A staff entra em contato por lá. Se quiser, informe o nick que você usa no jogo.</p>
+          <form class="auth-form" id="signupForm" data-require-player="false" data-origem="recrutamento">
+            <div class="auth-player" id="playerPicker">
+              <label>
+                <span>Nick in-game</span>
+                <div class="auth-player-input">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="nickInput" placeholder="Digite o nick que você usa no servidor" autocomplete="off" spellcheck="false">
+                  <i class="fa-solid fa-circle-notch fa-spin auth-player-loading" id="nickLoading" hidden></i>
+                </div>
+              </label>
+              <input type="hidden" name="playerId" id="playerId">
+              <ul class="auth-suggest" id="nickSuggest" role="listbox" hidden></ul>
+              <div class="auth-selected" id="playerSelected" hidden></div>
+              <p class="auth-hint muted" id="nickHint">Opcional. Se você já entrou em algum servidor da Vanguarda, seu nick aparece na lista. Se não, pode deixar em branco.</p>
+            </div>
+            <label class="auth-check">
+              <input type="checkbox" name="termos" required>
+              <span>Li e aceito as <a href="regras.html" target="_blank">regras da comunidade</a> e a <a href="privacidade.html" target="_blank">política de privacidade</a>.</span>
+            </label>
+            <div class="auth-social">
+              <button type="submit" class="btn btn-social btn-discord" data-provider="discord"><i class="fa-brands fa-discord"></i> Cadastrar com Discord</button>
+            </div>
+          </form>
+          <p class="auth-switch muted">Já é da Vanguarda? <a href="login.html">Entrar</a></p>
+        </div>
+
+        <p class="auth-fine muted">Usamos só o seu ID público do Discord para a staff falar com você e liberar o cargo de recruta. Nenhuma senha é armazenada pela Vanguarda.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

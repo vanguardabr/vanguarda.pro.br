@@ -1,140 +1,385 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <title>Vanguarda</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-  </head>
-  <body>
-    <div id="particles-js"></div>
-      <div class="logo-container">
-        <center>
-            <img src="./assets/img/logo_vanguarda.png" alt="Vanguarda" class="logo">
-        </center>
-        <div class="button-links">
-          <div><a href="https://discord.gg/vanguarda" class="btn btn-outline-danger button" target="_blank"> <i class="fab fa-discord"></i> Discord</a></div>
-          <div><a href="https://event.vanguarda.pro.br" class="btn btn-outline-danger button" target="_blank"><i class="fa-solid fa-chart-line"></i> Ranking server treino</a></div>
-          <!-- <div><a href="htSStps://stats.vanguarda.pro.br" class="btn btn-outline-danger button" target="_blank"><i class="fa-solid fa-chart-line"></i> Ranking server publico </a></div> -->
-          <div><a href="https://www.youtube.com/@VanguardaHLL" class="btn btn-outline-danger" target="_blank"><i class="fa-brands fa-youtube"></i> Youtube  </a></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanguarda — Time competitivo multi-jogos</title>
+  <meta name="description" content="Vanguarda é um time competitivo brasileiro de CS2, Hell Let Loose e Wardogs. Treinos organizados, servidores próprios mantidos por doações da comunidade e VIP de brinde para quem doa.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-name">VANGUARDA</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#top">Início</a></li>
+          <li><a href="#modalidades">Modalidades</a></li>
+          <li><a href="#planos">VIP</a></li>
+          <li><a href="#servidores">Servidores</a></li>
+          <li><a href="ranking.html">Ranking</a></li>
+          <li><a href="recrutamento.html">Alistamento</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Logar-se</a>
         </div>
-        <!-- <div class="button-links">
-                        <div><a href="https://vip.vanguarda.pro.br" class="btn btn-warning vip-button" target="_blank"><i class="fa-solid fa-star"></i>  COMPRAR VIP  <i class="fa-solid fa-star"></i></a></div>
-        </div> -->
       </div>
-    <script src="./assets/js/particles.js"></script>
-    <script id="rendered-js">
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 800,
-                    "density": {
-                        "enable": true,
-                        "value_area": 3000
-                    }
-                },
-                "color": {
-                    "value": "#fc0000"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 3
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 0.1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 2,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 5,
-                        "size_min": 0,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": false,
-                    "distance": 500,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 2
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 7,
-                    "direction": "top",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": false,
-                        "mode": "bubble"
-                    },
-                    "onclick": {
-                        "enable": false,
-                        "mode": "repulse"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 400,
-                        "line_linked": {
-                            "opacity": 0.5
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 4,
-                        "duration": 0.3,
-                        "opacity": 1,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-        count_particles = document.querySelector('.js-count-particles');
-        update = function() {
-            requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-    </script>
-  </body>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header id="top" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1 class="hero-title">Time competitivo multi-jogos</h1>
+        <p class="hero-lead">Somos uma organização brasileira que leva a sério o jogo em equipe. Treinos organizados, servidores próprios e uma comunidade que joga junto todos os dias.</p>
+        <div class="hero-actions">
+          <a href="#planos" class="btn btn-primary btn-lg btn-hero"><i class="fa-solid fa-heart"></i> QUERO SER VIP !</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/img/logo.png" alt="Vanguarda" class="hero-logo">
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== POR QUE A VANGUARDA ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Por que a Vanguarda</span>
+        <h2 class="typewriter" data-phrases='["Aqui ninguém joga sozinho","Estrutura de time, alma de comunidade","Jogo sério, do treino ao campeonato","Organização dentro e fora do servidor"]'><span class="typewriter-text">Aqui ninguém joga sozinho</span></h2>
+      </div>
+      <div class="grid grid-3 features">
+        <div class="feature">
+          <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <h3>Treinos organizados</h3>
+          <p>Calendário semanal de treinos e scrims por modalidade, com análise de partidas e feedback da staff.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon"><i class="fa-solid fa-server"></i></div>
+          <h3>Servidores próprios</h3>
+          <p>Servidores hospedados em São Paulo, mantidos pelas doações da comunidade, com ranking e estatísticas em tempo real.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h3>Cenário competitivo</h3>
+          <p>Participação em ligas, campeonatos e amistosos contra outros times das Américas e Europa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MODALIDADES ===== -->
+  <section id="modalidades" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Modalidades</span>
+        <h2>Os jogos que a gente compete</h2>
+      </div>
+      <div class="grid grid-3 modes">
+        <article class="mode">
+          <div class="mode-cover g1"><img src="assets/img/mode-cs2.jpg" alt="Counter-Strike 2" loading="lazy"><img src="assets/img/mode-cs2.jpg" alt="" aria-hidden="true" class="glitch glitch-r" loading="lazy"><img src="assets/img/mode-cs2.jpg" alt="" aria-hidden="true" class="glitch glitch-b" loading="lazy"></div>
+          <div class="mode-body">
+            <span class="mode-tag">FPS tático · 5v5</span>
+            <h3>Counter-Strike 2</h3>
+            <p>Treinos, mix/pug interno.</p>
+            <ul class="mode-list">
+              <li><i class="fa-solid fa-users"></i> Line-up ativa</li>
+              <li><i class="fa-solid fa-clock"></i> Jogos de terca, quarta e quinta</li>
+              <li><i class="fa-solid fa-server"></i> Servidor de privado para mix</li>
+            </ul>
+          </div>
+        </article>
+        <article class="mode featured">
+          <div class="mode-cover g6"><img src="assets/img/mode-hll.jpg" alt="Hell Let Loose" loading="lazy"><img src="assets/img/mode-hll.jpg" alt="" aria-hidden="true" class="glitch glitch-r" loading="lazy"><img src="assets/img/mode-hll.jpg" alt="" aria-hidden="true" class="glitch glitch-b" loading="lazy"></div>
+          <div class="mode-body">
+            <span class="mode-tag">Guerra realista · 50v50</span>
+            <h3>Hell Let Loose</h3>
+            <p>Unidade organizada com cadeia de comando, squads fixos e treinos de comunicação, logística e tática.</p>
+            <ul class="mode-list">
+              <li><i class="fa-solid fa-users"></i> Infantaria, blindados e artilharia</li>
+              <li><i class="fa-solid fa-clock"></i> Eventos e treinos semanais</li>
+              <li><i class="fa-solid fa-trophy"></i> Campeonatos e ligas contra outros clãs</li>
+              <li><i class="fa-solid fa-server"></i> Servidor de eventos com ranking</li>
+            </ul>
+          </div>
+        </article>
+        <article class="mode">
+          <div class="mode-cover g2"><img src="assets/img/mode-wardogs.jpg" alt="Wardogs" loading="lazy"><img src="assets/img/mode-wardogs.jpg" alt="" aria-hidden="true" class="glitch glitch-r" loading="lazy"><img src="assets/img/mode-wardogs.jpg" alt="" aria-hidden="true" class="glitch glitch-b" loading="lazy"></div>
+          <div class="mode-body">
+            <span class="mode-tag">Tático · squads</span>
+            <h3>Wardogs</h3>
+            <p>Divisão em formação com foco em coordenação de squad e partidas organizadas contra outras comunidades.</p>
+            <ul class="mode-list">
+              <li><i class="fa-solid fa-users"></i> Vagas abertas para todos os níveis</li>
+              <li><i class="fa-solid fa-clock"></i> Partidas organizadas aos sábados</li>
+              <li><i class="fa-solid fa-comments"></i> Canal dedicado no Discord</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="center section-cta">
+        <p class="muted">Vagas abertas em todas as modalidades.</p>
+        <a href="recrutamento.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-user-plus"></i> Estamos recrutando</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANOS ===== -->
+  <section id="planos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Doação</span>
+        <h2>Doe para o clã e ganhe o VIP de brinde</h2>
+        <p class="muted section-sub">A Vanguarda se mantém com doações da comunidade: são elas que pagam os servidores da nossa comunidade. Como agradecimento, quem doa recebe o VIP de brinde pelo período escolhido. Sem renovação automática.</p>
+      </div>
+      <div class="grid grid-3 plans">
+        <div class="plan">
+          <h3>Gratuito</h3>
+          <p class="plan-spec">Para quem está chegando, sem doação</p>
+          <div class="price">
+            <span class="price-new">R$ 0</span>
+          </div>
+          <p class="price-note muted">Acesso básico à comunidade. Doe quando quiser.</p>
+          <ul class="plan-list">
+            <li><i class="fa-solid fa-check"></i> Acesso ao Discord da comunidade</li>
+            <li><i class="fa-solid fa-check"></i> Servidores públicos</li>
+            <li><i class="fa-solid fa-check"></i> Participação em eventos abertos</li>
+            <li><i class="fa-solid fa-check"></i> Teste para as line-ups</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Vaga reservada nos servidores</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Cargo e tag VIP no Discord e in-game</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Fila prioritária no servidor treino</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Acesso aos treinos abertos</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Canal VIP com a staff</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Doação com 16% de desconto</li>
+          </ul>
+          <a href="recrutamento.html" class="btn btn-outline btn-block"><i class="fa-solid fa-user-plus"></i> Alistar-se</a>
+        </div>
+        <div class="plan">
+          <h3>Doação · VIP 30 dias</h3>
+          <p class="plan-spec">Doação com um mês de VIP de brinde</p>
+          <div class="price">
+            <span class="price-new">R$ 14,90</span>
+            <span class="price-per">/30 dias</span>
+          </div>
+          <p class="price-note muted">Doação única. VIP de brinde por 30 dias.</p>
+          <ul class="plan-list">
+            <li><i class="fa-solid fa-check"></i> Acesso ao Discord da comunidade</li>
+            <li><i class="fa-solid fa-check"></i> Servidores públicos</li>
+            <li><i class="fa-solid fa-check"></i> Participação em eventos abertos</li>
+            <li><i class="fa-solid fa-check"></i> Teste para as line-ups</li>
+            <li><i class="fa-solid fa-check"></i> Vaga reservada nos servidores</li>
+            <li><i class="fa-solid fa-check"></i> Cargo e tag VIP no Discord e in-game</li>
+            <li><i class="fa-solid fa-check"></i> Fila prioritária no servidor treino</li>
+            <li><i class="fa-solid fa-check"></i> Acesso aos treinos abertos</li>
+            <li><i class="fa-solid fa-check"></i> Canal VIP com a staff</li>
+            <li class="off"><i class="fa-solid fa-xmark"></i> Doação com 16% de desconto</li>
+          </ul>
+          <a href="login.html?plano=vip30" class="btn btn-outline btn-block"><i class="fa-solid fa-heart"></i> Doar R$ 14,90</a>
+        </div>
+        <div class="plan featured">
+          <span class="plan-tag">Melhor valor</span>
+          <h3>Doação · VIP 60 dias</h3>
+          <p class="plan-spec">Doação com dois meses de VIP de brinde</p>
+          <div class="price">
+            <span class="price-new">R$ 24,90</span>
+            <span class="price-per">/60 dias</span>
+          </div>
+          <p class="price-note muted">Doação única. VIP de brinde por 60 dias. Você economiza <strong>16%</strong>.</p>
+          <ul class="plan-list">
+            <li><i class="fa-solid fa-check"></i> Acesso ao Discord da comunidade</li>
+            <li><i class="fa-solid fa-check"></i> Servidores públicos</li>
+            <li><i class="fa-solid fa-check"></i> Participação em eventos abertos</li>
+            <li><i class="fa-solid fa-check"></i> Teste para as line-ups</li>
+            <li><i class="fa-solid fa-check"></i> Vaga reservada nos servidores</li>
+            <li><i class="fa-solid fa-check"></i> Cargo e tag VIP no Discord e in-game</li>
+            <li><i class="fa-solid fa-check"></i> Fila prioritária no servidor treino</li>
+            <li><i class="fa-solid fa-check"></i> Acesso aos treinos abertos</li>
+            <li><i class="fa-solid fa-check"></i> Canal VIP com a staff</li>
+            <li><i class="fa-solid fa-check"></i> Doação com 16% de desconto</li>
+          </ul>
+          <a href="login.html?plano=vip60" class="btn btn-primary btn-block"><i class="fa-solid fa-heart"></i> Doar R$ 24,90</a>
+        </div>
+      </div>
+      <p class="center muted plans-note">O VIP não está à venda: é o brinde para quem doa. Sem renovação automática, quando o período acabar você decide se quer doar de novo. Doe via PIX ou cartão.</p>
+    </div>
+  </section>
+
+  <!-- ===== SERVIDORES ===== -->
+  <section id="servidores" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Infraestrutura</span>
+        <h2>Nossos servidores</h2>
+        <p class="muted section-sub">Servidores próprios hospedados em São Paulo, com ping baixo para todo o Brasil, ranking integrado e moderação ativa da staff.</p>
+        <div class="counters counters-inline">
+          <div class="counter"><strong>3</strong><span>servidores</span></div>
+          <div class="counter"><strong>99,9%</strong><span>uptime</span></div>
+          <div class="counter"><strong>&lt;20ms</strong><span>no Brasil</span></div>
+        </div>
+      </div>
+      <!-- Top 3: dados de exemplo até integrar com o ranking real -->
+      <div class="grid grid-3 servers">
+        <a class="server" href="ranking.html?servidor=hll" data-map="carentan" title="Ver ranking completo">
+          <div class="server-head"><span class="dot online"></span> <strong>HLL · Eventos</strong> <span class="mono push-right">100 slots</span></div>
+          <p>Servidor de Hell Let Loose para eventos, treinos e partidas organizadas da unidade. Vaga reservada para quem doa.</p>
+          <dl class="server-stats">
+            <div><dt>Online</dt><dd>64/100</dd></div>
+            <div><dt>Mapa</dt><dd>Carentan</dd></div>
+          </dl>
+          <div class="server-top">
+            <span class="server-top-title"><i class="fa-solid fa-trophy"></i> Top 3 jogadores</span>
+            <ol>
+            <li><span class="rank rank-1"><i class="fa-solid fa-medal"></i></span><span class="player">Sgt.Ferraz</span><span class="score mono">1.240 pts</span></li>
+            <li><span class="rank rank-2"><i class="fa-solid fa-medal"></i></span><span class="player">Kowalski</span><span class="score mono">1.115 pts</span></li>
+            <li><span class="rank rank-3"><i class="fa-solid fa-medal"></i></span><span class="player">Dutra_BR</span><span class="score mono">980 pts</span></li>
+            </ol>
+          </div>
+          <span class="server-meta"><i class="fa-solid fa-location-dot"></i> São Paulo <span class="server-go">Ver ranking <i class="fa-solid fa-arrow-right"></i></span></span>
+        </a>
+        <a class="server" href="ranking.html?servidor=wardogs" data-map="king-of-the-hill" title="Ver ranking completo">
+          <div class="server-head"><span class="dot online"></span> <strong>Wardogs</strong> <span class="mono push-right">100 slots</span></div>
+          <p>Servidor da divisão de Wardogs, com partidas organizadas aos sábados e aberto à comunidade no restante da semana.</p>
+          <dl class="server-stats">
+            <div><dt>Online</dt><dd>42/100</dd></div>
+            <div><dt>Mapa</dt><dd>Bakurani</dd></div>
+          </dl>
+          <div class="server-top">
+            <span class="server-top-title"><i class="fa-solid fa-trophy"></i> Top 3 jogadores</span>
+            <ol>
+            <li><span class="rank rank-1"><i class="fa-solid fa-medal"></i></span><span class="player">Rook</span><span class="score mono">864 pts</span></li>
+            <li><span class="rank rank-2"><i class="fa-solid fa-medal"></i></span><span class="player">Vieira</span><span class="score mono">790 pts</span></li>
+            <li><span class="rank rank-3"><i class="fa-solid fa-medal"></i></span><span class="player">Nomad</span><span class="score mono">742 pts</span></li>
+            </ol>
+          </div>
+          <span class="server-meta"><i class="fa-solid fa-location-dot"></i> São Paulo <span class="server-go">Ver ranking <i class="fa-solid fa-arrow-right"></i></span></span>
+        </a>
+        <a class="server" href="ranking.html?servidor=cs2" data-map="mirage" title="Ver ranking completo">
+          <div class="server-head"><span class="dot online"></span> <strong>CS2 · PUG/Mix</strong> <span class="mono push-right">10 slots</span></div>
+          <p>Servidor privado de CS2 para PUGs e mix entre membros, com senha no Discord.</p>
+          <dl class="server-stats">
+            <div><dt>Online</dt><dd>8/10</dd></div>
+            <div><dt>Mapa</dt><dd>Mirage</dd></div>
+          </dl>
+          <div class="server-top">
+            <span class="server-top-title"><i class="fa-solid fa-trophy"></i> Top 3 jogadores</span>
+            <ol>
+            <li><span class="rank rank-1"><i class="fa-solid fa-medal"></i></span><span class="player">zkr</span><span class="score mono">1.21 K/D</span></li>
+            <li><span class="rank rank-2"><i class="fa-solid fa-medal"></i></span><span class="player">mnz</span><span class="score mono">1.14 K/D</span></li>
+            <li><span class="rank rank-3"><i class="fa-solid fa-medal"></i></span><span class="player">tatu</span><span class="score mono">1.08 K/D</span></li>
+            </ol>
+          </div>
+          <span class="server-meta"><i class="fa-solid fa-lock"></i> Privado <span class="server-go">Ver ranking <i class="fa-solid fa-arrow-right"></i></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Dúvidas frequentes</span>
+        <h2>Perguntas e respostas</h2>
+      </div>
+      <div class="accordion" id="faqAcc">
+        <details open>
+          <summary>Como faço para entrar na Vanguarda?</summary>
+          <div class="acc-body">Entre no nosso Discord, leia as regras e abra um ticket na modalidade que você joga. A staff agenda um teste ou te encaminha para a divisão certa.</div>
+        </details>
+        <details>
+          <summary>Preciso ter nível competitivo para participar?</summary>
+          <div class="acc-body">Não. A comunidade e os servidores são abertos para todos. As line-ups competitivas têm processo seletivo, mas as divisões de Hell Let Loose e Wardogs aceitam jogadores de qualquer nível.</div>
+        </details>
+        <details>
+          <summary>Quais são os horários de treino?</summary>
+          <div class="acc-body">Cada modalidade tem o seu calendário, publicado toda semana no Discord. Em geral os treinos acontecem à noite, entre 20h e 23h, no horário de Brasília.</div>
+        </details>
+        <details>
+          <summary>O que ganho ao doar para o clã?</summary>
+          <div class="acc-body">Quem doa recebe o VIP de brinde: vaga reservada nos servidores, cargo e tag exclusivos no Discord e in-game, fila prioritária no servidor treino, acesso aos treinos abertos e canal VIP com a staff.</div>
+        </details>
+        <details>
+          <summary>Para onde vai a doação?</summary>
+          <div class="acc-body">Integralmente para o clã: hospedagem dos servidores, inscrições em campeonatos, ferramentas de análise e premiações de eventos da comunidade. A staff não recebe nada.</div>
+        </details>
+        <details>
+          <summary>A doação renova sozinha?</summary>
+          <div class="acc-body">Não. Cada doação é única e o VIP de brinde fica ativo pelo período escolhido, 30 ou 60 dias. Quando acabar, você decide se quer doar de novo. Sem cobrança recorrente e sem fidelidade.</div>
+        </details>
+        <details>
+          <summary>Jogo em outro time. Posso usar os servidores?</summary>
+          <div class="acc-body">Os servidores públicos são abertos para todos. O servidor de treino e o competitivo de CS2 são reservados para membros e doadores.</div>
+        </details>
+        <details>
+          <summary>Como funciona o ranking do servidor treino?</summary>
+          <div class="acc-body">As estatísticas são coletadas automaticamente a cada partida e publicadas no ranking online, com kills, suporte, objetivos e tempo de jogo.</div>
+        </details>
+        <details>
+          <summary>Vocês têm vagas para staff?</summary>
+          <div class="acc-body">Sim. Abrimos vagas periódicas para moderação, organização de eventos e criação de conteúdo. Os avisos saem no canal de anúncios do Discord.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="#top">
+            <img src="assets/img/logo.png" alt="Vanguarda" class="logo">
+            <span class="brand-name">VANGUARDA</span>
+          </a>
+          <p class="muted">Time competitivo brasileiro de CS2, Hell Let Loose e Wardogs. Jogo em equipe, servidores próprios e comunidade ativa.</p>
+          <div class="social">
+            <a href="https://discord.gg/vanguarda" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.youtube.com/@VanguardaHLL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Time</h4>
+          <ul>
+            <li><a href="#modalidades">Modalidades</a></li>
+            <li><a href="#planos">Doação</a></li>
+            <li><a href="#servidores">Servidores</a></li>
+            <li><a href="ranking.html">Ranking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Comunidade</h4>
+          <ul>
+            <li><a href="https://discord.gg/vanguarda" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="regras.html">Regras</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Vanguarda. Todos os direitos reservados.</span>
+        <span><a href="#">Termos de uso</a> · <a href="privacidade.html">Privacidade</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+</body>
 </html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ranking dos servidores — Vanguarda</title>
+  <meta name="description" content="Ranking dos servidores da Vanguarda: Hell Let Loose, Wardogs e CS2. Pontuação, kills, mortes e tempo de jogo dos melhores jogadores.">
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="page-ranking">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container navbar-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-name">VANGUARDA</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html#modalidades">Modalidades</a></li>
+          <li><a href="index.html#planos">VIP</a></li>
+          <li><a href="index.html#servidores">Servidores</a></li>
+          <li><a href="ranking.html">Ranking</a></li>
+          <li><a href="recrutamento.html">Alistamento</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-primary"><i class="fa-solid fa-right-to-bracket"></i> Logar-se</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== CABEÇALHO DO SERVIDOR ===== -->
+  <header id="top" class="rank-hero" data-map="">
+    <div class="container rank-hero-inner">
+      <a href="index.html#servidores" class="rank-back"><i class="fa-solid fa-arrow-left"></i> Todos os servidores</a>
+      <span class="kicker">Ranking</span>
+      <h1 class="rank-title"><span class="dot online"></span> <span id="rankServerName">Servidor</span></h1>
+      <p class="muted rank-desc" id="rankServerDesc"></p>
+      <dl class="server-stats rank-stats" id="rankStats"></dl>
+    </div>
+  </header>
+
+  <!-- ===== TABELA ===== -->
+  <section class="section section-alt rank-section">
+    <div class="container">
+      <nav class="rank-tabs" id="rankTabs" aria-label="Escolher servidor">
+        <a href="ranking.html?servidor=hll" data-server="hll">HLL · Eventos</a>
+        <a href="ranking.html?servidor=wardogs" data-server="wardogs">Wardogs</a>
+        <a href="ranking.html?servidor=cs2" data-server="cs2">CS2 · PUG/Mix</a>
+      </nav>
+
+      <div class="rank-toolbar">
+        <label class="rank-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" id="rankSearch" placeholder="Buscar jogador"></label>
+        <span class="muted rank-updated" id="rankUpdated"></span>
+      </div>
+
+      <div class="rank-table-wrap">
+        <table class="rank-table" id="rankTable">
+          <thead>
+            <tr>
+              <th class="col-pos">#</th>
+              <th>Jogador</th>
+              <th class="num">Pontos</th>
+              <th class="num">Kills</th>
+              <th class="num">Mortes</th>
+              <th class="num">K/D</th>
+              <th class="num">Tempo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="center muted rank-note">As estatísticas são coletadas automaticamente a cada partida. Dúvidas ou contestações, abra um ticket no Discord.</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="index.html">
+            <img src="assets/img/logo.png" alt="Vanguarda" class="logo">
+            <span class="brand-name">VANGUARDA</span>
+          </a>
+          <p class="muted">Time competitivo brasileiro de CS2, Hell Let Loose e Wardogs. Jogo em equipe, servidores próprios e comunidade ativa.</p>
+          <div class="social">
+            <a href="https://discord.gg/vanguarda" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://www.youtube.com/@VanguardaHLL" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Time</h4>
+          <ul>
+            <li><a href="index.html#modalidades">Modalidades</a></li>
+            <li><a href="index.html#planos">Doação</a></li>
+            <li><a href="index.html#servidores">Servidores</a></li>
+            <li><a href="ranking.html">Ranking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Comunidade</h4>
+          <ul>
+            <li><a href="https://discord.gg/vanguarda" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="regras.html">Regras</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Vanguarda. Todos os direitos reservados.</span>
+        <span><a href="#">Termos de uso</a> · <a href="privacidade.html">Privacidade</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/ranking.js"></script>
+</body>
+</html>
