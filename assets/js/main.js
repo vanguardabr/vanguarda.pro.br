@@ -75,5 +75,51 @@
     setTimeout(tick, HOLD);
   });
 
+  // Servidores com dados reais (status ao vivo + top 3 por kills da temporada atual),
+  // pela API do VIP, que lê o warcon. O card casa pelo slug do servidor no VIP.
+  const SITE_API = 'https://vip.vanguarda.pro.br/api/v1/site/servers';
+  const liveCards = document.querySelectorAll('.server[data-vip-server]');
+  const fmt = new Intl.NumberFormat('pt-BR');
+
+  function renderCard(card, srv) {
+    const $ = (k) => card.querySelector('[data-live="' + k + '"]');
+    const s = srv.status;
+    // online=null: o painel não soube dizer; não afirma que caiu
+    if (s && s.online !== null) {
+      const dot = $('dot');
+      dot.classList.remove('pending', 'online', 'offline');
+      dot.classList.add(s.online ? 'online' : 'offline');
+      dot.title = s.online ? 'Online' : 'Fora do ar';
+      $('online').textContent = s.online ? (s.players ?? 0) + '/' + (s.max_players ?? '?') : 'Offline';
+      if (s.map) $('map').textContent = s.map.replace(/_/g, ' ');
+      if (s.max_players) $('slots').textContent = s.max_players + ' slots';
+    }
+    if (srv.top_players.length) {
+      $('top').querySelectorAll('li').forEach((li, i) => {
+        const p = srv.top_players[i];
+        li.querySelector('.player').textContent = p ? p.name : '–';
+        li.querySelector('.score').textContent = p ? fmt.format(p.kills) + ' kills' : '';
+      });
+    }
+  }
+
+  function loadServers() {
+    fetch(SITE_API)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        const bySlug = new Map(d.servers.map((srv) => [srv.slug, srv]));
+        liveCards.forEach((card) => {
+          const srv = bySlug.get(card.dataset.vipServer);
+          if (srv) renderCard(card, srv);
+        });
+      })
+      .catch(() => {}); // sem resposta: mantém o que já está nos cards
+  }
+
+  if (liveCards.length) {
+    loadServers();
+    setInterval(() => { if (!document.hidden) loadServers(); }, 60000);
+  }
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

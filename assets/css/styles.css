@@ -157,6 +157,8 @@ input { font: inherit; }
 .panel-foot i { color: var(--accent-2); margin-right: .3rem; }
 .panel-body { padding: 1.2rem; display: grid; gap: 1rem; }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: #6ee7a0; box-shadow: 0 0 10px #6ee7a0; display: inline-block; }
+.dot.pending { background: #8a8f98; box-shadow: none; }
+.dot.offline { background: #e30613; box-shadow: 0 0 10px #e30613; }
 .stat { display: grid; grid-template-columns: 1fr auto; gap: .3rem .6rem; font-size: .9rem; color: var(--muted); }
 .stat strong { color: #fff; }
 .bar { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.08); overflow: hidden; }
