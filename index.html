@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261013">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261016">
 </head>
 <body>
 
@@ -229,7 +229,7 @@
           <div class="counter"><strong>&lt;20ms</strong><span>no Brasil</span></div>
         </div>
       </div>
-      <!-- Top 3: dados de exemplo até integrar com o ranking real -->
+      <!-- Wardogs: dados reais via vip.vanguarda.pro.br/api/v1/site/servers (assets/js/main.js). HLL e CS2: exemplo -->
       <div class="grid grid-3 servers">
         <a class="server" href="ranking.html?servidor=hll" data-map="carentan" title="Ver ranking completo">
           <div class="server-head"><span class="dot online"></span> <strong>HLL · Eventos</strong> <span class="mono push-right">100 slots</span></div>
@@ -248,19 +248,19 @@
           </div>
           <span class="server-meta"><i class="fa-solid fa-location-dot"></i> São Paulo <span class="server-go">Ver ranking <i class="fa-solid fa-arrow-right"></i></span></span>
         </a>
-        <a class="server" href="ranking.html?servidor=wardogs" data-map="king-of-the-hill" title="Ver ranking completo">
-          <div class="server-head"><span class="dot online"></span> <strong>Wardogs</strong> <span class="mono push-right">100 slots</span></div>
+        <a class="server" href="https://wardogs.vanguarda.pro.br/s/add8a0bf-eca3-42e5-b5ca-ac03021ae9f8/leaderboard" data-map="king-of-the-hill" data-vip-server="vanguarda" title="Ver ranking completo" target="_blank" rel="noopener">
+          <div class="server-head"><span class="dot pending" data-live="dot"></span> <strong>Wardogs</strong> <span class="mono push-right" data-live="slots">100 slots</span></div>
           <p>Servidor da divisão de Wardogs, com partidas organizadas aos sábados e aberto à comunidade no restante da semana.</p>
           <dl class="server-stats">
-            <div><dt>Online</dt><dd>42/100</dd></div>
-            <div><dt>Mapa</dt><dd>Bakurani</dd></div>
+            <div><dt>Online</dt><dd data-live="online">&ndash;</dd></div>
+            <div><dt>Mapa</dt><dd data-live="map">&ndash;</dd></div>
           </dl>
           <div class="server-top">
             <span class="server-top-title"><i class="fa-solid fa-trophy"></i> Top 3 jogadores</span>
-            <ol>
-            <li><span class="rank rank-1"><i class="fa-solid fa-medal"></i></span><span class="player">Rook</span><span class="score mono">864 pts</span></li>
-            <li><span class="rank rank-2"><i class="fa-solid fa-medal"></i></span><span class="player">Vieira</span><span class="score mono">790 pts</span></li>
-            <li><span class="rank rank-3"><i class="fa-solid fa-medal"></i></span><span class="player">Nomad</span><span class="score mono">742 pts</span></li>
+            <ol data-live="top">
+            <li><span class="rank rank-1"><i class="fa-solid fa-medal"></i></span><span class="player">&ndash;</span><span class="score mono"></span></li>
+            <li><span class="rank rank-2"><i class="fa-solid fa-medal"></i></span><span class="player">&ndash;</span><span class="score mono"></span></li>
+            <li><span class="rank rank-3"><i class="fa-solid fa-medal"></i></span><span class="player">&ndash;</span><span class="score mono"></span></li>
             </ol>
           </div>
           <span class="server-meta"><i class="fa-solid fa-location-dot"></i> São Paulo <span class="server-go">Ver ranking <i class="fa-solid fa-arrow-right"></i></span></span>
@@ -377,6 +377,6 @@
 
   <button class="back-top" id="backTop" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <script src="assets/js/main.js?v=20261013"></script>
+  <script src="assets/js/main.js?v=20261016"></script>
 </body>
 </html>
