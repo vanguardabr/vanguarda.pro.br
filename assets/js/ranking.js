@@ -1,4 +1,5 @@
-/* Ranking dos servidores. Dados de exemplo até integrar com a fonte real. */
+/* Ranking dos servidores. Wardogs: dados reais pela API do VIP (`vip`, o slug do servidor lá).
+   HLL e CS2: dados de exemplo até integrar com a fonte real. */
 (function () {
   const SERVERS = {
     hll: {
@@ -17,17 +18,8 @@
       ],
     },
     wardogs: {
-      name: 'Wardogs', map: 'king-of-the-hill',
+      name: 'Wardogs', map: 'king-of-the-hill', vip: 'vanguarda',
       desc: 'Servidor da divisão de Wardogs, com partidas organizadas aos sábados e aberto à comunidade no restante da semana.',
-      stats: [['Online', '42/100'], ['Mapa', 'Bakurani'], ['Slots', '100'], ['Local', 'São Paulo']],
-      unit: 'pts',
-      players: [
-        ['Rook', 864, 201, 140, '26h'], ['Vieira', 790, 188, 150, '24h'], ['Nomad', 742, 170, 139, '22h'],
-        ['Ghost_BR', 701, 160, 131, '21h'], ['Falcão', 668, 149, 128, '20h'], ['Dente', 630, 141, 130, '18h'],
-        ['Karen_01', 598, 133, 119, '17h'], ['Mago', 571, 128, 121, '16h'], ['Cabo_Lucas', 540, 120, 112, '15h'],
-        ['Sombra', 512, 114, 110, '14h'], ['Trovão', 488, 108, 104, '13h'], ['Pedrão', 455, 100, 99, '12h'],
-        ['Mika', 430, 94, 96, '11h'], ['Bruxo', 402, 88, 90, '10h'], ['Lobo', 377, 81, 84, '9h'],
-      ],
     },
     cs2: {
       name: 'CS2 · PUG/Mix', map: 'mirage',
@@ -47,34 +39,90 @@
   const key = SERVERS[params.get('servidor')] ? params.get('servidor') : 'hll';
   const srv = SERVERS[key];
 
+  const VIP_API = 'https://vip.vanguarda.pro.br/api/v1/site/servers/';
+
   document.title = `Ranking ${srv.name} — Vanguarda`;
   const hero = document.getElementById('top');
   hero.dataset.map = srv.map;
   document.getElementById('rankServerName').textContent = srv.name;
   document.getElementById('rankServerDesc').textContent = srv.desc;
-  document.getElementById('rankStats').innerHTML = srv.stats.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
-  document.getElementById('rankUpdated').textContent = 'Atualizado em ' + new Date().toLocaleDateString('pt-BR');
   document.querySelectorAll('#rankTabs a').forEach((a) => a.classList.toggle('active', a.dataset.server === key));
 
+  const stats = document.getElementById('rankStats');
+  const updated = document.getElementById('rankUpdated');
+  const dot = document.querySelector('.rank-title .dot');
+  const head = document.querySelector('#rankTable thead tr');
   const tbody = document.querySelector('#rankTable tbody');
+  const search = document.getElementById('rankSearch');
   const fmt = (n) => n.toLocaleString('pt-BR');
-  function render(filter) {
-    const q = (filter || '').trim().toLowerCase();
-    tbody.innerHTML = srv.players.map(([nick, pts, k, d, time], i) => {
-      if (q && !nick.toLowerCase().includes(q)) return '';
-      const pos = i + 1;
-      const medal = pos <= 3 ? `<i class="fa-solid fa-medal rank-${pos}"></i>` : pos;
-      return `<tr class="${pos <= 3 ? 'top' : ''}">
-        <td class="col-pos">${medal}</td>
-        <td class="col-player">${nick}</td>
-        <td class="num strong">${fmt(pts)}</td>
-        <td class="num">${fmt(k)}</td>
-        <td class="num">${fmt(d)}</td>
-        <td class="num">${(k / Math.max(d, 1)).toFixed(2)}</td>
-        <td class="num mono">${time}</td>
-      </tr>`;
-    }).join('') || '<tr><td colspan="7" class="center muted">Nenhum jogador encontrado.</td></tr>';
+  const esc = (t) => String(t).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const kd = (k, d) => (k / Math.max(d, 1)).toFixed(2);
+  const hours = (min) => (min >= 60 ? Math.floor(min / 60) + 'h' + (min % 60 ? String(min % 60).padStart(2, '0') : '') : min + 'min');
+  const medal = (pos) => (pos <= 3 ? `<i class="fa-solid fa-medal rank-${pos}"></i>` : pos);
+
+  function setStats(list) {
+    stats.innerHTML = list.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
   }
-  render('');
-  document.getElementById('rankSearch').addEventListener('input', (e) => render(e.target.value));
+
+  // linhas: [posição, nick, células numéricas já formatadas (a primeira em destaque)]
+  function renderRows(rows, cols, filter) {
+    const q = (filter || '').trim().toLowerCase();
+    const html = rows
+      .filter(([, nick]) => !q || nick.toLowerCase().includes(q))
+      .map(([pos, nick, cells]) => `<tr class="${pos <= 3 ? 'top' : ''}">
+        <td class="col-pos">${medal(pos)}</td>
+        <td class="col-player">${esc(nick)}</td>
+        ${cells.map((c, i) => `<td class="num${i === 0 ? ' strong' : ''}${i === cells.length - 1 ? ' mono' : ''}">${esc(c)}</td>`).join('')}
+      </tr>`)
+      .join('');
+    tbody.innerHTML = html || `<tr><td colspan="${cols}" class="center muted">Nenhum jogador encontrado.</td></tr>`;
+  }
+
+  function setHead(labels) {
+    head.innerHTML = '<th class="col-pos">#</th><th>Jogador</th>' + labels.map((l) => `<th class="num">${l}</th>`).join('');
+  }
+
+  function message(text, cols) {
+    tbody.innerHTML = `<tr><td colspan="${cols}" class="center muted">${esc(text)}</td></tr>`;
+  }
+
+  let rows = [];
+  let cols = 7;
+  search.addEventListener('input', (e) => renderRows(rows, cols, e.target.value));
+
+  if (srv.vip) {
+    // dados reais: temporada atual, por kills
+    setHead(['Kills', 'Mortes', 'K/D', 'Tempo']);
+    cols = 6;
+    setStats([['Online', '–'], ['Mapa', '–'], ['Slots', '–'], ['Local', 'São Paulo']]);
+    dot.classList.replace('online', 'pending');
+    updated.textContent = 'Temporada atual, por kills';
+    message('Carregando ranking…', cols);
+
+    fetch(VIP_API + encodeURIComponent(srv.vip))
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        const s = d.status;
+        if (s && s.online !== null) {
+          dot.classList.remove('pending');
+          dot.classList.add(s.online ? 'online' : 'offline');
+          setStats([
+            ['Online', s.online ? (s.players ?? 0) + '/' + (s.max_players ?? '?') : 'Offline'],
+            ['Mapa', s.map ? s.map.replace(/_/g, ' ') : '–'],
+            ['Slots', s.max_players ?? '–'],
+            ['Local', 'São Paulo'],
+          ]);
+        }
+        rows = d.ranking.map((p) => [p.rank, p.name, [fmt(p.kills), fmt(p.deaths), kd(p.kills, p.deaths), hours(p.minutes)]]);
+        updated.textContent = `Temporada atual, por kills · atualizado às ${new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`;
+        if (rows.length) renderRows(rows, cols, search.value);
+        else message('Ninguém no ranking desta temporada ainda.', cols);
+      })
+      .catch(() => message('Ranking indisponível no momento. Tente de novo em instantes.', cols));
+  } else {
+    setStats(srv.stats);
+    updated.textContent = 'Atualizado em ' + new Date().toLocaleDateString('pt-BR');
+    rows = srv.players.map(([nick, pts, k, d, time], i) => [i + 1, nick, [fmt(pts), fmt(k), fmt(d), kd(k, d), time]]);
+    renderRows(rows, cols, '');
+  }
 })();
