@@ -1,6 +1,6 @@
 # Vanguarda — site completo
 
-Site institucional da Vanguarda, time competitivo brasileiro de CS2, Hell Let Loose e Wardogs. O site apresenta o clã, as modalidades, os servidores, a doação com VIP de brinde e as páginas de login, recrutamento, ranking, regras e privacidade.
+Site institucional da Vanguarda, time competitivo brasileiro de CS2, Hell Let Loose e Wardogs. O site apresenta o clã, as modalidades, os servidores, a doação com VIP de brinde e as páginas de login, ranking, regras e privacidade.
 
 É um site estático: HTML, CSS e JavaScript puros, sem framework e sem etapa de build. Basta servir a pasta.
 
@@ -29,10 +29,11 @@ Dependências externas, carregadas por CDN:
 |---|---|
 | `index.html` | Página inicial: hero, por que a Vanguarda, modalidades, doação, servidores e FAQ. |
 | `login.html` | Entrar e criar conta via Discord. Recebe `?plano=vip30` ou `?plano=vip60` dos botões de doar e `?tela=cadastro` para abrir direto no cadastro. |
-| `recrutamento.html` | Cadastro de recruta via Discord, aberto pelo botão "Estamos recrutando". Mesmo layout do login, sem abas. |
 | `ranking.html` | Ranking de um servidor. Recebe `?servidor=hll`, `wardogs` ou `cs2`. Sem parâmetro mostra o HLL. |
 | `regras.html` | Regras da comunidade. |
 | `privacidade.html` | Política de privacidade. |
+
+O recrutamento fica fora deste site, em https://membros.vanguarda.pro.br, e é aberto pelos links "Alistamento", "Estamos recrutando" e "Alistar-se".
 
 Os cards de servidor na página inicial são links para o ranking do servidor correspondente.
 
@@ -40,7 +41,7 @@ Os cards de servidor na página inicial são links para o ranking do servidor co
 
 ```
 completo/
-├── index.html, login.html, recrutamento.html, ranking.html, regras.html, privacidade.html
+├── index.html, login.html, ranking.html, regras.html, privacidade.html
 ├── assets/
 │   ├── css/styles.css        # todo o estilo do site, em seções comentadas
 │   ├── js/
@@ -61,7 +62,7 @@ completo/
 
 As cores ficam em variáveis CSS no bloco `:root`, no topo de `styles.css`. O tema atual é o "oliva": fundo verde-musgo escuro com o vermelho da marca como destaque. Para mudar a paleta, basta trocar os valores dessas variáveis.
 
-O hero usa `camo-oliva.svg` como fundo, com um escurecimento por cima para manter o texto legível. O mesmo tile é usado no painel esquerdo do login e do recrutamento.
+O hero usa `camo-oliva.svg` como fundo, com um escurecimento por cima para manter o texto legível. O mesmo tile é usado no painel esquerdo do login.
 
 Detalhes de comportamento:
 
@@ -86,7 +87,7 @@ Tudo que depende de backend está simulado no front, com comentários indicando 
 - Login e cadastro são só via Discord. Os botões levam para `/auth/discord`, definido na constante `AUTH_URL`, passando na URL:
   - `plano` (vip30 ou vip60), quando veio de um botão de doar;
   - `jogador` (id do jogador escolhido na busca) e `nick`;
-  - `novo=1` no cadastro e `origem=recrutamento` quando veio da página de recrutamento.
+  - `novo=1` no cadastro e `origem` quando o formulário define `data-origem`.
 - O backend deve implementar o OAuth2 do Discord nesse endpoint e, no retorno, vincular o ID do Discord ao jogador.
 - Nenhuma senha é pedida nem guardada.
 
@@ -95,7 +96,7 @@ Tudo que depende de backend está simulado no front, com comentários indicando 
 - A função `searchPlayers(query)` simula `GET /api/players?q=` com 250 ms de latência, filtrando a lista `MOCK_PLAYERS`.
 - Formato esperado por jogador: `id`, `nick`, `servers` (ids de servidores) e `steam` (`name`, `avatar`, `url`) ou `null` quando não entrou pela Steam.
 - Jogadores com perfil Steam são exibidos no tema da Steam, com avatar; os demais ganham um placeholder e o tema genérico.
-- Na página de login a escolha de um jogador da lista é obrigatória. No recrutamento é opcional, porque o recruta pode nunca ter entrado num servidor (atributo `data-require-player="false"` no formulário).
+- Na página de login a escolha de um jogador da lista é obrigatória. Um formulário pode torná-la opcional com o atributo `data-require-player="false"`.
 
 ### Ranking (`ranking.js`)
 
